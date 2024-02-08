@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'league spartan';
+    src: url('/public/fonts/LeagueSpartan-VariableFont_wght.ttf');
+}
+
+:root{
+    --font: 'league spartan';
+}
+
+* {
+    box-sizing: border-box;
+    transition: all 0.2s linear;
+}
+
+
+body{
+    min-height: 100vh;
+    margin: 0px;
+}
