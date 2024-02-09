@@ -19,7 +19,7 @@ function EnjoyablePlace() {
 
     return(
         <section className={styles.container}>
-            <img className={styles.image} src={setImage()}/>
+            <img className={styles.photo} src={setImage()}/>
             <div className={styles.content}>
                 <img alt='line' src={icons['line']} className={styles.content_line}/>
                 <h1 className={styles.content_title}>

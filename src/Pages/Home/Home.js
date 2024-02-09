@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import EnjoyablePlace from './EnjoyablePlace';
 import SourcedFood from './SourcedFood';
+import MenuHighlights from './MenuHighlights';
 import styles from './styles.module.css';
 import images from './images';
 
@@ -13,6 +14,7 @@ function Home() {
             <Header/>
             <EnjoyablePlace/>
             <SourcedFood/>
+            <MenuHighlights/>
         </main>
     )
 }

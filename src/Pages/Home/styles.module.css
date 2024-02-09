@@ -25,6 +25,11 @@
     .bgPatternOne{
         left: -150px;
     }
+
+    .bgPatternTwo{
+        top: 1711px;
+        right: -200px;
+    }
 }
 
 @media(max-width: 840px){
@@ -32,10 +37,15 @@
         left: -450px;
         top: 1092px;
     }
+
+    .bgPatternTwo{
+        top: 2162px;
+        right: -600px;
+    }
 }
 
 @media(max-width: 600px){
-    .bgPatternOne{
+    .bgPatternOne, .bgPatternTwo{
         display: none;
     }
 }
