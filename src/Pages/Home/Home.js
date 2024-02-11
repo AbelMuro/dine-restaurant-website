@@ -3,6 +3,7 @@ import Header from './Header';
 import EnjoyablePlace from './EnjoyablePlace';
 import SourcedFood from './SourcedFood';
 import MenuHighlights from './MenuHighlights';
+import ImageCarousel from './ImageCarousel'
 import styles from './styles.module.css';
 import images from './images';
 
@@ -15,6 +16,7 @@ function Home() {
             <EnjoyablePlace/>
             <SourcedFood/>
             <MenuHighlights/>
+            <ImageCarousel/>
         </main>
     )
 }

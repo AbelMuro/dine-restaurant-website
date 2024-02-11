@@ -32,7 +32,7 @@ function SourcedFood(){
             </div>
             <div className={styles.photo_container}>
                 <img className={styles.photo} src={setImage()} />
-                <img className={styles.pattern_lines} src={images['patternLines']}/>                
+                <img className={styles.pattern_lines} src={icons['patternLines']}/>                
             </div>
         </section>
     )

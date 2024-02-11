@@ -1,0 +1,246 @@
+.highlights{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 761px;
+    background-color: #111;
+    position: relative;
+    top: -95px;
+    margin-bottom: 65px;
+}
+
+.highlights_content{
+    width: 1110px;
+    display: grid;
+    grid-template-columns: 445px 540px;    
+    justify-content: space-between;
+}
+
+.highlights_line{
+    width: 71px;
+    height: 7px;
+    margin-bottom: 55px;
+    grid-column: 1/2;
+    grid-row: 1/2;
+}
+
+.highlights_title{
+    color: #FFF;
+    font-family: var(--font);
+    font-size: 3rem;;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 48px; /* 100% */
+    letter-spacing: -0.5px;
+    grid-column: 1/2;
+    grid-row: 2/3;
+    margin: 0px 0px 27px 0px;
+    
+}
+
+.highlights_desc{
+    color: #FFF;
+    font-family: var(--font);
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px; /* 150% */
+    grid-column: 1/2;
+    grid-row: 3/4;
+    margin: 0px;
+}
+
+.highlights_list{
+    display: flex;
+    list-style-type: none;
+    flex-direction: column;
+    gap: 32px;
+    grid-column: 2/3;
+    grid-row: 2/5;
+    margin: 0px;
+    padding: 0px;
+}
+
+.highlights_list > li{
+    padding-bottom: 24px;
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+}
+
+.highlights_list > li:not(li:last-child){
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1494);
+}
+
+.list_image{
+    width: 128px;
+    height: 96px;
+    grid-column: 1/2;
+    grid-row: 1/3;
+}
+
+.list_line{
+    width: 32px;
+    height: 1px;
+    grid-column: 2/3;
+    grid-row: 1/2;
+    margin: 18px 30px 0px 0px;
+}
+
+.highlights_list > li > h2{
+    color: #FFF;
+    font-family: var(--font);
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 120% */
+    letter-spacing: -0.25px;
+    margin: 8px 0px 6px 0px;
+    grid-column: 3/4;
+    grid-row: 1/2;
+}
+
+.highlights_list > li > p{
+    color: #FFF;
+    font-family: var(--font);
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px; /* 162.5% */
+    margin: 0px;
+    grid-column: 3/4;
+    grid-row: 2/3;
+}
+
+
+@media(max-width: 1200px){
+    .highlights_content{
+        width: 90%;
+        grid-template-columns: 1fr 540px;
+        column-gap: 60px;
+    }
+}
+
+@media(max-width: 1070px){
+    .highlights{
+        top: -70px;   
+        margin-bottom: 90px;
+    }
+}
+
+@media(max-width: 1060px){
+    .highlights_content{
+        grid-template-columns: 1fr 445px;
+    }   
+    .list_line{
+        margin-right: 15px;
+    }
+}
+
+@media(max-width: 950px){
+    .highlights_content{
+        grid-template-columns: 1fr 400px;
+    }   
+}
+
+@media(max-width: 840px){
+    .highlights{
+        height: 891px;
+        top: 0px;
+        margin-bottom: 120px;
+    }
+
+    .highlights_content{
+        width: 80%;
+        grid-template-columns: auto;
+    }
+
+    .highlights_line{
+        margin: 0px auto 39px auto;
+    }
+
+    .highlights_title{
+        text-align: center;
+        width: 80%;
+        margin: 0px auto 27px auto;
+    }
+
+    .highlights_desc{
+        width: 80%;
+        text-align: center;
+        margin: 0px auto 54px auto;
+    }
+
+    .highlights_list{
+        grid-column: 1/2;
+        grid-row: 4/5;
+        gap: 24px;
+    }
+
+    .list_line{
+        margin-right: 30px;
+    }
+}
+
+@media(max-width: 600px){
+    .highlights{
+        height: 1720px;
+        margin-bottom: 80px;
+    }
+
+    .highlights_content{
+        width: 100%;
+    }
+
+
+    .highlights_line{
+        margin-bottom: 36px;
+    }
+
+    .highlights_title{
+        font-size: 32px;
+        line-height: 40px;
+        letter-spacing: -0.4px;
+        margin-bottom: 13px;
+        width: 90%;
+    }
+
+    .highlights_desc{
+        width: 80%;
+        font-size: 1rem;
+        line-height: 26px;
+        margin-bottom: 85px;
+    }
+
+    .highlights_list > li{
+        grid-template-columns: auto;
+        padding-bottom: 54px;
+    }
+
+    .highlights_list > li > h2{
+        margin: 0px 0px 6px 0px;
+        grid-column: 1/2;
+        grid-row: 2/3;
+        text-align: center;
+    }
+
+    .highlights_list > li > p{
+        width: 80%;
+        grid-column: 1/2;
+        grid-row: 3/4;
+        text-align: center;
+        margin: auto;
+    }
+
+    .list_line{
+        display: none;
+    }
+
+    .list_image{
+        width: 327px;
+        height: 245px;
+        grid-column: 1/2;
+        grid-row: 1/2;
+        margin: 0px auto 36px auto;
+    }
+
+}
