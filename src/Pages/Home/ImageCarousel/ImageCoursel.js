@@ -44,8 +44,10 @@ function ImageCoursel() {
 
     return(
         <section className={styles.carousel}>
-            <img className={styles.carousel_patternLines} src={commonIcons['patternLines']}/>
-            <img className={styles.carousel_image} src={handleImage()}/>
+            <div className={styles.carousel_imageContainer}>
+                <img className={styles.carousel_patternLines} src={commonIcons['patternLines']}/>                
+                <img className={styles.carousel_image} src={handleImage()}/>                
+            </div>
             <h1 className={styles.carousel_title}>
                 {carousel}
             </h1>

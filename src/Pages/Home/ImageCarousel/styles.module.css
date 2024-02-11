@@ -8,6 +8,11 @@
     column-gap: 125px;
 }
 
+.carousel_imageContainer{
+    position: relative;
+    grid-row: 1/6;
+}
+
 .carousel_patternLines{
     width: 160px;
     height: 76px;
@@ -19,7 +24,6 @@
 .carousel_image{
     width: 540px;
     height: 600px;
-    grid-row: 1/6;
 }
 
 .carousel_title{
@@ -159,15 +163,18 @@
     }
 
     .carousel_patternLines{
-        left: -10px;
+        left: -58px;
+    }
+
+    .carousel_imageContainer{
+        grid-column: 1/2;
+        grid-row: 1/2;
     }
 
     .carousel_image{
         width: 573px;
         height: 384px;
         margin: 0px auto 57px auto;     
-        grid-column: 1/2;
-        grid-row: 1/2;
     }
 
     .carousel_list > li:nth-of-type(1){
@@ -228,5 +235,5 @@
 }
 
 @media(max-width: 600px){
-    
+
 }
