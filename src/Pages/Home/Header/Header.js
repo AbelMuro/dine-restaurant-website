@@ -1,8 +1,15 @@
 import React from 'react';
 import styles from './styles.module.css';
 import icons from '~/Common/icons';
+import { useNavigate } from 'react-router-dom';
 
 function Header() {
+    const navigate = useNavigate();
+
+    const handleNavigate = () => {
+        navigate('/Booking');
+    }
+
     return(
         <header className={styles.header}>
             <section className={styles.header_content}>
@@ -14,7 +21,7 @@ function Header() {
                     Experience our seasonal menu in beautiful country surroundings. 
                     Eat the freshest produce from the comfort of our farmhouse.
                 </p>
-                <button type='button' className={styles.header_book}>
+                <button type='button' className={styles.header_book} onClick={handleNavigate}>
                     book a table
                 </button>                
             </section>

@@ -5,11 +5,18 @@ import icons from './icons'
 import commonIcons from '~/Common/icons';
 import data from './Data';
 import useMediaQuery from '~/Hooks/useMediaQuery.js';
+import { useNavigate } from 'react-router-dom';
 
 function ImageCoursel() {
     const [carousel, setCarousel] = useState('Family Gathering');
     const [tablet] = useMediaQuery('(max-width: 840px)');
+    const [mobile] = useMediaQuery('(max-width: 600px)');
     const buttonsRef = useRef();
+    const navigate = useNavigate();
+
+    const handleNavigate = () => {
+        navigate('/Booking');
+    }
 
     const handleCarousel = (e) => {
         if(!e.target.matches('button')) return;
@@ -18,7 +25,12 @@ function ImageCoursel() {
     }
 
     const handleImage = () => {
-        return images[carousel + ' Desktop']
+        if(mobile)
+            return images[carousel + ' Mobile'];
+        else if(tablet)
+            return images[carousel + ' Tablet'];
+        else
+            return images[carousel + ' Desktop'];
     }
 
     const handleDesc = () => {
@@ -54,7 +66,7 @@ function ImageCoursel() {
             <p className={styles.carousel_desc}>
                 {handleDesc()}
             </p>
-            <button className={styles.carousel_button}>
+            <button className={styles.carousel_button} onClick={handleNavigate}>
                 book a table
             </button>
             <ul className={styles.carousel_list} ref={buttonsRef} onClick={handleCarousel}>

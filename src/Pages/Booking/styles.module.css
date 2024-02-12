@@ -1,0 +1,53 @@
+.reservations{
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    background-image: url('./images/hero-bg-desktop.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 65px;
+}
+
+.reservations_content{
+    display: grid;
+    grid-template-columns: 445px auto;
+    justify-content: center;
+    align-content: start;
+    row-gap: 153px;
+    column-gap: 125px;
+}
+
+.reservations_header{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.reservations_logo{
+    width: 103px;
+    height: 40px;
+    grid-column: 1/3;
+    grid-row: 1/2;
+}
+
+.reservations_header > h1{
+    color: #FFF;
+    font-family: var(--font);
+    font-size: 5rem;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 80px; /* 100% */
+    letter-spacing: -1px;
+    margin: 0px;
+}
+
+.reservations_header > p{
+    color: #FFF;
+    font-family: var(--font);
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px; /* 150% */
+    margin: 0px;
+}

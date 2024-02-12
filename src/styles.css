@@ -10,6 +10,8 @@
     --close: 50;
     --far: 25;
     --farthest: 0;
+    --placeholder: rgba(17, 17, 17, 0.5);
+    --date-placeholder: rgba(17, 17, 17, 0.5);
 }
 
 * {
