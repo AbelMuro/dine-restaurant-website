@@ -2,8 +2,7 @@ import React, {useState, useRef, forwardRef, useImperativeHandle} from 'react';
 import styles from './styles.module.css'
 
 
-const InputDate = forwardRef( ({min, max, placeholder, setIsEmpty}, ref)  => {
-    const [date, setDate] = useState('');
+const InputDate = forwardRef( ({min, max, placeholder, date, setDate}, ref)  => {
     const inputRef = useRef();
 
     const addErrorStyles = () => {
@@ -16,7 +15,6 @@ const InputDate = forwardRef( ({min, max, placeholder, setIsEmpty}, ref)  => {
         inputRef.current.style.borderBottom = '';
         inputRef.current.style.color = ''; 
         inputRef.current.style.setProperty('--date-placeholder', 'rgba(17, 17, 17, 0.5)');
-        setIsEmpty(false)
     }
 
 
@@ -37,7 +35,6 @@ const InputDate = forwardRef( ({min, max, placeholder, setIsEmpty}, ref)  => {
 
         if(isEmpty){
             addErrorStyles();
-            setIsEmpty(true);
         }
 
     }

@@ -29,6 +29,7 @@
 }
 
 .error_message{
+    display: none;
     color: #B54949;
     font-family: var(--font);
     font-size: 0.625rem;
