@@ -2,35 +2,136 @@ import React, {useRef, useState, useEffect} from 'react';
 import InputDate from './InputDate';
 import styles from './styles.module.css';
 
-
-//need to find a way to check all three states and determine when the error message should be displayed
 function ChooseDate(){
     const [day, setDay] = useState('');
     const [month, setMonth] = useState('');
     const [year, setYear] = useState('');
     const errorMessageRef = useRef();
+    const monthInputRef = useRef();
+    const dayInputRef = useRef();
+    const yearInputRef = useRef();
+    const titleRef = useRef();
+    const skipFirstRender = useRef(true);
     const currentYear = new Date().getFullYear();
 
+    const addErrorStyles = () => {
+        dayInputRef.current.style.borderBottom = '1px solid #B54949';
+        yearInputRef.current.style.borderBottom = '1px solid #B54949';
+        monthInputRef.current.style.borderBottom = '1px solid #B54949';
+        dayInputRef.current.style.color = '#B54949';
+        yearInputRef.current.style.color = '#B54949';
+        monthInputRef.current.style.color = '#B54949';
+        titleRef.current.style.color = '#B54949';
+        dayInputRef.current.style.setProperty('--date-placeholder', 'rgba(181, 73, 73, 0.5)');
+        monthInputRef.current.style.setProperty('--date-placeholder', 'rgba(181, 73, 73, 0.5)');
+        yearInputRef.current.style.setProperty('--date-placeholder', 'rgba(181, 73, 73, 0.5)');
+        errorMessageRef.current.style.display = 'block';
+    }
+
+    const removeErrorStyles = () => {
+        dayInputRef.current.style.borderBottom = '';
+        yearInputRef.current.style.borderBottom = '';
+        monthInputRef.current.style.borderBottom = '';
+        dayInputRef.current.style.color = '';
+        yearInputRef.current.style.color = '';
+        monthInputRef.current.style.color = '';
+        titleRef.current.style.color = '';
+        dayInputRef.current.style.setProperty('--date-placeholder', 'rgba(17, 17, 17, 0.5)');
+        monthInputRef.current.style.setProperty('--date-placeholder', 'rgba(17, 17, 17, 0.5)');
+        yearInputRef.current.style.setProperty('--date-placeholder', 'rgba(17, 17, 17, 0.5)');
+    }
+
+    const handleMonth = (e) => {
+        let userInput = e.target.value;
+        if(0 <= userInput && userInput <= 12)
+            setMonth(userInput);
+    }
+
+    const handleDay = (e) => {
+        let userInput = e.target.value;
+        if(0 <= userInput && userInput <= 31)
+            setDay(userInput);
+    }
+
+    const handleYear = (e) => {
+        setYear(e.target.value)
+    }
+
+    const handleDayBlur = (e) => {
+        let isEmpty = e.target.validity.valueMissing;
+        
+        if(isEmpty)
+            addErrorStyles();
+    }
+
+    const handleMonthBlur = (e) => {
+        let isEmpty = e.target.validity.valueMissing;
+        
+        if(isEmpty)
+            addErrorStyles();
+    }
+
+    const handleYearBlur = (e) => {
+        let isEmpty = e.target.validity.valueMissing;
+        
+        if(isEmpty)
+            addErrorStyles();
+    }
 
     useEffect(() => {
-        //find out a way to display or remove the error message with the three states
+        if(skipFirstRender.current){
+            skipFirstRender.current = false;
+            return
+        }
+        
+        if(day && month && year){
+            removeErrorStyles();
+            errorMessageRef.current.style.display = '';            
+        }
+        
     }, [day, month, year])
 
     return(
-        <fieldset className={styles.date}>
-            <h1 className={styles.date_title}>
+        <section className={styles.date}>
+            <h1 className={styles.date_title} ref={titleRef}>
                 Pick a date
             </h1>
             <fieldset className={styles.date_inputs}>
-                <InputDate min={0} max={12} placeholder='MM' date={day} setDate={setDay}/>
-                <InputDate min={0} max={31} placeholder='DD' date={month} setDate={setMonth} />
-                <InputDate min={0} max={Number(currentYear)} placeholder='YYYY' date={year} setDate={setYear}/>       
-                <div className={styles.error_message} ref={errorMessageRef}>
-                    This field is incomplete
-                </div>
+                <input 
+                    value={day}
+                    onChange={handleDay}
+                    onBlur={handleDayBlur}
+                    type='number' 
+                    placeholder='DD'
+                    className={styles.input}
+                    ref={dayInputRef}
+                    required
+                    name='day'/>                
+                <input 
+                    value={month}
+                    onChange={handleMonth}
+                    onBlur={handleMonthBlur}
+                    type='number' 
+                    placeholder='MM'
+                    className={styles.input}
+                    ref={monthInputRef}
+                    required
+                    name='month'/>
+                <input 
+                    value={year}
+                    onChange={handleYear}
+                    onBlur={handleYearBlur}
+                    type='number' 
+                    placeholder='YYYY'
+                    className={styles.input}
+                    ref={yearInputRef}
+                    required
+                    name='year'/>
             </fieldset>
-
-        </fieldset>
+            <div className={styles.error_message} ref={errorMessageRef}>
+                This field is incomplete
+            </div>
+        </section>
     )
 }
 

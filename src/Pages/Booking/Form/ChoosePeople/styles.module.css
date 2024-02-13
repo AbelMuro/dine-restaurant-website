@@ -1,0 +1,50 @@
+.people{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 22.669px 0px 25.926px ;
+    height: 41px;
+    border-bottom: 1px solid #8E8E8E;
+    color: #151515;
+    font-family: var(--font);
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 120% */
+    letter-spacing: -0.25px;
+}
+
+.people_minus{
+    width: 25px;
+    height: 25px;
+    border: none;
+    background-color: #9e7F66;
+    padding: 0px;
+    mask-image: url('./icons/icon-minus.svg');
+    -webkit-mask-image: url('./icons/icon-minus.svg');
+    mask-size: 5.796px 2.376px;
+    -webkit-mask-size:  5.796px 2.376px;
+    mask-position: center;
+    -webkit-mask-position: center;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    cursor: pointer;
+}
+
+
+.people_plus{
+    width: 25px;
+    height: 25px;
+    border: none;
+    background-color: #9e7F66;
+    padding: 0px;
+    mask-image: url('./icons/icon-plus.svg');
+    -webkit-mask-image: url('./icons/icon-plus.svg');
+    mask-size: 9.243px 9.243px;
+    -webkit-mask-size:  9.243px 9.243px;
+    mask-position: center;
+    -webkit-mask-position: center;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    cursor: pointer;
+}

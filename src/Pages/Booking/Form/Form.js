@@ -1,6 +1,8 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import Input from './Input'
 import ChooseDate from './ChooseDate';
+import ChooseTime from './ChooseTime';
+import ChoosePeople from './ChoosePeople';
 import styles from './styles.module.css';
 
 function Form(){
@@ -10,6 +12,8 @@ function Form(){
             <Input type='text' placeholder='Name' />
             <Input type='email' placeholder='Email' />
             <ChooseDate/>
+            <ChooseTime/>
+            <ChoosePeople/>
             <input type='submit' value='make reservation' className={styles.form_submit}/>
         </form>
     )
