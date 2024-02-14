@@ -82,3 +82,37 @@
     -moz-appearance: textfield;
     appearance: textfield;
 }
+
+
+@media(max-width: 600px){
+    .date{
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .date_title{
+        align-self: start;
+    }
+
+    .date_inputs{
+        gap: 14px;
+    }
+
+    .input:not(.input:last-child){
+        width: 73px;
+        height: 43px;
+        padding: 0px 14.5px 15px 14.5px;
+    }
+
+    .input:last-child{
+        width: 88px;
+        height: 43px;
+        padding: 0px 14.5px 15px 14.5px;
+    }
+
+    .error_message{
+        top: 10px;
+        left: 100px;
+        bottom: initial;
+    }
+}

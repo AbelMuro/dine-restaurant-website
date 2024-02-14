@@ -1,5 +1,4 @@
 import React, {useRef, useState, useEffect} from 'react';
-import InputDate from './InputDate';
 import styles from './styles.module.css';
 
 function ChooseDate(){
@@ -7,12 +6,12 @@ function ChooseDate(){
     const [month, setMonth] = useState('');
     const [year, setYear] = useState('');
     const errorMessageRef = useRef();
+    const invalidDateRef = useRef();    
     const monthInputRef = useRef();
     const dayInputRef = useRef();
     const yearInputRef = useRef();
     const titleRef = useRef();
-    const skipFirstRender = useRef(true);
-    const currentYear = new Date().getFullYear();
+
 
     const addErrorStyles = () => {
         dayInputRef.current.style.borderBottom = '1px solid #B54949';
@@ -25,7 +24,6 @@ function ChooseDate(){
         dayInputRef.current.style.setProperty('--date-placeholder', 'rgba(181, 73, 73, 0.5)');
         monthInputRef.current.style.setProperty('--date-placeholder', 'rgba(181, 73, 73, 0.5)');
         yearInputRef.current.style.setProperty('--date-placeholder', 'rgba(181, 73, 73, 0.5)');
-        errorMessageRef.current.style.display = 'block';
     }
 
     const removeErrorStyles = () => {
@@ -42,53 +40,65 @@ function ChooseDate(){
     }
 
     const handleMonth = (e) => {
+        e.target.setCustomValidity('');
         let userInput = e.target.value;
         if(0 <= userInput && userInput <= 12)
             setMonth(userInput);
     }
 
     const handleDay = (e) => {
+        e.target.setCustomValidity('');
         let userInput = e.target.value;
         if(0 <= userInput && userInput <= 31)
             setDay(userInput);
     }
 
     const handleYear = (e) => {
+        e.target.setCustomValidity('');
+        let userInput = e.target.value;
+        if(userInput.length > 4) return;
         setYear(e.target.value)
     }
 
-    const handleDayBlur = (e) => {
+    const handleBlur = (e) => {
         let isEmpty = e.target.validity.valueMissing;
         
-        if(isEmpty)
+        if(isEmpty){
             addErrorStyles();
+            errorMessageRef.current.style.display = 'block';
+        }
+            
     }
 
-    const handleMonthBlur = (e) => {
+    const handleInvalid = (e) => {
         let isEmpty = e.target.validity.valueMissing;
-        
-        if(isEmpty)
-            addErrorStyles();
-    }
 
-    const handleYearBlur = (e) => {
-        let isEmpty = e.target.validity.valueMissing;
-        
-        if(isEmpty)
+        if(isEmpty){
             addErrorStyles();
+            errorMessageRef.current.style.display = 'block';
+        }
+            
+        e.target.setCustomValidity(' ');
     }
 
     useEffect(() => {
-        if(skipFirstRender.current){
-            skipFirstRender.current = false;
-            return
+        if(!day || !month || !year) return;
+
+        let reservationDate = new Date(year, month, day).getTime();
+        let currentDate = new Date().getTime();
+
+        if(currentDate <= reservationDate){
+            monthInputRef.current.setCustomValidity(' ');
+            yearInputRef.current.setCustomValidity(' ');
+            dayInputRef.current.setCustomValidity(' ');
+            invalidDateRef.current.style.display = 'block'
         }
-        
-        if(day && month && year){
+            
+        else{
             removeErrorStyles();
-            errorMessageRef.current.style.display = '';            
-        }
-        
+            errorMessageRef.current.style.display = '';   
+            invalidDateRef.current.style.display = ''             
+        }   
     }, [day, month, year])
 
     return(
@@ -100,7 +110,8 @@ function ChooseDate(){
                 <input 
                     value={day}
                     onChange={handleDay}
-                    onBlur={handleDayBlur}
+                    onBlur={handleBlur}
+                    onInvalid={handleInvalid}
                     type='number' 
                     placeholder='DD'
                     className={styles.input}
@@ -110,7 +121,8 @@ function ChooseDate(){
                 <input 
                     value={month}
                     onChange={handleMonth}
-                    onBlur={handleMonthBlur}
+                    onBlur={handleBlur}
+                    onInvalid={handleInvalid}
                     type='number' 
                     placeholder='MM'
                     className={styles.input}
@@ -120,7 +132,8 @@ function ChooseDate(){
                 <input 
                     value={year}
                     onChange={handleYear}
-                    onBlur={handleYearBlur}
+                    onBlur={handleBlur}
+                    onInvalid={handleInvalid}
                     type='number' 
                     placeholder='YYYY'
                     className={styles.input}
@@ -130,6 +143,9 @@ function ChooseDate(){
             </fieldset>
             <div className={styles.error_message} ref={errorMessageRef}>
                 This field is incomplete
+            </div>
+            <div className={styles.error_message} ref={invalidDateRef}>
+                Date is invalid
             </div>
         </section>
     )

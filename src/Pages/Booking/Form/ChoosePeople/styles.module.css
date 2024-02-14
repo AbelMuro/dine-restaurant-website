@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 22.669px 0px 25.926px ;
+    padding: 0px 24.7185px 0px 23.028px;
     height: 41px;
     border-bottom: 1px solid #8E8E8E;
     color: #151515;
@@ -31,12 +31,16 @@
     cursor: pointer;
 }
 
+.people_minus:hover{
+    background-color: rgba(158, 127, 102, 0.5);
+}
+
 
 .people_plus{
     width: 25px;
     height: 25px;
     border: none;
-    background-color: #9e7F66;
+    background-color: #9E7F66;
     padding: 0px;
     mask-image: url('./icons/icon-plus.svg');
     -webkit-mask-image: url('./icons/icon-plus.svg');
@@ -47,4 +51,15 @@
     mask-repeat: no-repeat;
     -webkit-mask-repeat: no-repeat;
     cursor: pointer;
+}
+
+.people_plus:hover{
+    background-color: rgba(158, 127, 102, 0.5)
+}
+
+@media(max-width: 600px){
+    .people{
+        padding: 0px 9.1215px 0px 9.398px;
+    }
+
 }

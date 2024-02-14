@@ -70,3 +70,31 @@
     -moz-appearance: textfield;
     appearance: textfield;
 }
+
+
+@media(max-width: 600px){
+    .time{
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .time_title{
+        align-self: start;
+    }
+
+    .time_inputs{
+        gap: 14px;
+    }
+
+    .input{
+        width: 73px;
+        height: 43px;
+        padding: 0px 14.6px 15px 14.6px; 
+    }
+
+    .error_message{
+        top: 10px;
+        left: 100px;
+        bottom: initial;
+    }
+}

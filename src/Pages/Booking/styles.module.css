@@ -10,12 +10,12 @@
 }
 
 .reservations_content{
+    width: 1110px;
     display: grid;
-    grid-template-columns: 445px auto;
-    justify-content: center;
+    grid-template-columns: 445px 540px;
+    justify-content: space-between;
     align-content: start;
     row-gap: 153px;
-    column-gap: 125px;
 }
 
 .reservations_header{
@@ -50,4 +50,157 @@
     font-weight: 400;
     line-height: 30px; /* 150% */
     margin: 0px;
+}
+
+.reservations_button{
+    width: 245px;
+    height: 64px;
+    padding: 0px;
+    background-color: transparent;
+    border: 1px solid #FFF;
+    color: #FFF;
+    font-family: var(--font);
+    font-size: 1.0625rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px; /* 94.118% */
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    grid-row: 3/4;
+    justify-self: center;
+    margin-bottom: 91px;
+    cursor: pointer;
+}
+
+.reservations_button:hover{
+    background-color: white;
+    color: #111;
+}
+
+.reservations_images{
+    height: 320px;
+    position: relative;
+}
+
+.reservations_pattern{
+    width: 993px;
+    height: 320px;
+    position: absolute;
+    left: 0px;
+}
+
+.reservations_lines{
+    width: 160px;
+    height: 76px;
+    position: absolute;
+    left: 655px;
+    bottom: 78px;
+}
+
+
+@media(max-width: 1160px){
+    .reservations_content{
+        width: 90%;
+        grid-template-columns: 1fr 495px;
+        column-gap: 50px;
+    }
+}
+
+@media(max-width: 1100px){
+    .reservations_pattern{
+        left: -200px;
+    }
+
+    .reservations_lines{
+        left: 400px;
+    }
+}
+
+@media(max-width: 1050px){
+    .reservations_header > h1{
+        font-size: 3rem;
+    }
+
+    .reservations_content{
+        column-gap: 30px;
+    }
+}
+
+@media(max-width: 840px){
+    .reservations{
+        padding-top: 56px;
+        background-image: url('./images/hero-bg-tablet.jpg');
+    }
+
+    .reservations_logo{
+        margin-bottom: 32px;
+    }
+
+    .reservations_content{
+        grid-template-columns: 100%;
+        row-gap: 38px;
+        column-gap: 0px;
+    }
+
+    .reservations_header{
+        width: 90%;
+        gap: 12px;
+        justify-self: center;
+        grid-column: 1/2;
+        grid-row: 2/3; 
+    }
+
+    .reservations_header > h1{
+        line-height: 64px;
+        letter-spacing: -0.6px;
+    }
+
+    .reservations_header > h1, 
+    .reservations_header > p {
+        text-align: center;
+    }
+
+    .reservatons_images{
+        width: 435px;
+    }
+
+    .reservations_pattern, .reservations_lines{
+        display: none;
+    }
+}
+
+
+@media(max-width: 600px){
+    .reservations{
+        background-image: url('./images/hero-bg-mobile@2x.jpg');
+    }
+
+    .reservations_content{
+        row-gap: 0px;
+    }
+
+    .reservations_logo{
+        margin-bottom: 44px;
+        justify-self: center;
+    }
+
+    .reservations_header{
+        gap: 13px;
+        margin-bottom: 19px;
+    }
+
+    .reservations_header > h1{
+        font-size: 2rem;
+        line-height: 40px;
+        letter-spacing: -0.4px;
+    }
+
+    .reservations_header > p{
+        font-size: 1rem;
+        line-height: 26px;
+    }
+
+    .reservations_images{
+        height: 534px;
+    }
 }

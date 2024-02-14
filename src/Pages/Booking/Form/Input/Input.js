@@ -1,7 +1,7 @@
 import React, {useState, useRef} from 'react';
 import styles from './styles.module.css';
 
-function Input({type, placeholder}) {
+function Input({type, placeholder, name}) {
     const [text, setText] = useState('');
     const emptyMessage = useRef();
     const invalidMessage = useRef();
@@ -22,6 +22,7 @@ function Input({type, placeholder}) {
     }
 
     const handleChange = (e) => {
+        e.target.setCustomValidity('');
         removeErrorStyles();
         setText(e.target.value);
     }
@@ -41,6 +42,7 @@ function Input({type, placeholder}) {
     }
 
     const handleInvalid = (e) => {
+        e.target.setCustomValidity(' ');
         const isEmpty = e.target.validity.valueMissing;
 
         if(isEmpty){
@@ -53,6 +55,8 @@ function Input({type, placeholder}) {
         }
     }
 
+
+
     return(
         <fieldset className={styles.container}>
             <input 
@@ -64,6 +68,7 @@ function Input({type, placeholder}) {
                 placeholder={placeholder} 
                 className={styles.input}
                 ref={inputRef}
+                name={name}
                 required
                 />          
                 <label className={styles.error_message} ref={emptyMessage}>

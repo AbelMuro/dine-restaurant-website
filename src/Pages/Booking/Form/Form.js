@@ -7,10 +7,25 @@ import styles from './styles.module.css';
 
 function Form(){
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        let inputs = e.target.elements;
+        let name = inputs.name.value;
+        let email = inputs.email.value;
+        let hour = inputs.hour.value;
+        let minutes = inputs.minutes.value;
+        let timeOfDay = inputs.timeOfDay.value;
+        let people = inputs.people.value;
+        let month = inputs.month.value;
+        let day = inputs.day.value;
+        let year = inputs.year.value;        
+        console.log('submitted');  
+    }
+
     return(
-        <form className={styles.form}>
-            <Input type='text' placeholder='Name' />
-            <Input type='email' placeholder='Email' />
+        <form className={styles.form} onSubmit={handleSubmit}>
+            <Input type='text' placeholder='Name' name='name'/>
+            <Input type='email' placeholder='Email' name='email'/>
             <ChooseDate/>
             <ChooseTime/>
             <ChoosePeople/>

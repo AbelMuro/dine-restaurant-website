@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import styles from './styles.module.css';
-import icons from './icons';
 
 function ChoosePeople() {
     const [count, setCount] = useState(1);
@@ -22,7 +21,7 @@ function ChoosePeople() {
         <div className={styles.people}>
             <button type='button' className={styles.people_minus} onClick={handleDecrement}>
             </button>
-            {`${count} people`}
+            {`${count} ${count === 1 ? 'person' : 'people'}`}
             <button type='button' className={styles.people_plus} onClick={handleIncrement}>
             </button>   
             <input type='hidden' value={count} name='people'/>

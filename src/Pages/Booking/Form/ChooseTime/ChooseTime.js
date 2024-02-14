@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import SelectTimeOfDay from './SelectTimeOfDay';
 import styles from './styles.module.css';
 
@@ -22,7 +22,19 @@ function ChooseTime() {
         errorMessageRef.current.style.display = 'block';
     }
 
+    const removeErrorStyles = () => {
+        hourInputRef.current.style.borderBottom = '';
+        minutesInputRef.current.style.borderBottom = '';
+        hourInputRef.current.style.color = '';
+        minutesInputRef.current.style.color = '';
+        titleRef.current.style.color = '';
+        hourInputRef.current.style.setProperty('--placeholder', '');
+        minutesInputRef.current.style.setProperty('--placeholder', '');
+        errorMessageRef.current.style.display = '';
+    }
+
     const handleHour = (e) => {
+        e.target.setCustomValidity('')
         let userInput = e.target.value;
         if(userInput.length > 2) return;
         userInput = Number(userInput);
@@ -32,6 +44,7 @@ function ChooseTime() {
     }
 
     const handleMinutes = (e) => {
+        e.target.setCustomValidity('')
         let userInput = e.target.value;
         if(userInput.length > 2) return;
         userInput = Number(userInput);
@@ -40,19 +53,26 @@ function ChooseTime() {
             setMinutes(e.target.value);
     }
 
-    const handleHourBlur = (e) => {
+    const handleBlur = (e) => {
         let isEmpty = e.target.validity.valueMissing;
 
         if(isEmpty)
             addErrorStyles();
     }
 
-    const handleMinutesBlur = (e) => {
+    const handleInvalid = (e) => {
         let isEmpty = e.target.validity.valueMissing;
 
         if(isEmpty)
             addErrorStyles();
+
+        e.target.setCustomValidity(' ')
     }
+
+    useEffect(() => {
+        if(hour && minutes)
+            removeErrorStyles();
+    }, [hour, minutes])
 
     return(
         <section className={styles.time}>
@@ -64,7 +84,8 @@ function ChooseTime() {
                     type='number' 
                     value={hour}
                     onChange={handleHour}
-                    onBlur={handleHourBlur}
+                    onBlur={handleBlur}
+                    onInvalid={handleInvalid}
                     placeholder='09'
                     className={styles.input}
                     name='hour'
@@ -75,7 +96,8 @@ function ChooseTime() {
                     type='number' 
                     value={minutes}
                     onChange={handleMinutes}
-                    onBlur={handleMinutesBlur}
+                    onBlur={handleBlur}
+                    onInvalid={handleInvalid}
                     placeholder='00'
                     className={styles.input}
                     name='minutes'
