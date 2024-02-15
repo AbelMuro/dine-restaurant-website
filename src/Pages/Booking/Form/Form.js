@@ -17,7 +17,7 @@ function Form(){
         let day = Number(inputs.day.value);
         let year = Number(inputs.year.value);  
         
-        if(day > calendar[month - 1] || day === 0){     //we check if the day is a valid day for the month (29, feb)
+        if(day > calendar[month - 1] || day === 0){  
             alert('Reservation date is invalid');
             return;
         }
