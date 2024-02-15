@@ -1,10 +1,10 @@
 import React from 'react';
 import Header from './Header';
-import EnjoyablePlace from './EnjoyablePlace';
-import SourcedFood from './SourcedFood';
+import CaptionOne from './CaptionOne';
+import CaptionTwo from './CaptionTwo';
 import MenuHighlights from './MenuHighlights';
 import ImageCarousel from './ImageCarousel'
-import MakeReservations from './MakeReservation';
+import MakeReservation from './MakeReservation';
 import styles from './styles.module.css';
 import images from './images';
 
@@ -15,11 +15,11 @@ function Home() {
             <img className={styles.bgPattern} src={images['bgPatternTwo']}/>
             <img className={styles.bgPattern} src={images['bgPatternOne']} />
             <Header/>
-            <EnjoyablePlace/>
-            <SourcedFood/>
+            <CaptionOne/>
+            <CaptionTwo/>
             <MenuHighlights/>
             <ImageCarousel/>
-            <MakeReservations/>
+            <MakeReservation/>
         </main>
     )
 }

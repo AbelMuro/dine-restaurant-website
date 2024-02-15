@@ -4,7 +4,7 @@ import images from './images';
 import icons from '~/Common/icons';
 import useMediaQuery from '~/Hooks/useMediaQuery.js';
 
-function EnjoyablePlace() {
+function CaptionOne() {
     const [tablet] = useMediaQuery('(max-width: 840px)');
     const [mobile] = useMediaQuery('(max-width: 600px)');
 
@@ -36,4 +36,4 @@ function EnjoyablePlace() {
     )
 }
 
-export default EnjoyablePlace;
+export default CaptionOne;

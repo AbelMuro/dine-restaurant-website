@@ -4,7 +4,7 @@ import images from './images';
 import icons from '~/Common/icons'
 import useMediaQuery from '~/Hooks/useMediaQuery.js';
 
-function SourcedFood(){
+function CaptionTwo(){
     const [tablet] = useMediaQuery('(max-width: 840px)');
     const [mobile] = useMediaQuery('(max-width: 600px)');
 
@@ -38,4 +38,4 @@ function SourcedFood(){
     )
 }
 
-export default SourcedFood;
+export default CaptionTwo;
