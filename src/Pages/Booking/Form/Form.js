@@ -36,7 +36,7 @@ function Form(){
     }
 
     return(
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form id='form' className={styles.form} onSubmit={handleSubmit}>
             <Input type='text' placeholder='Name' name='name'/>
             <Input type='email' placeholder='Email' name='email'/>
             <ChooseDate/>

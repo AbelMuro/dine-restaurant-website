@@ -14,6 +14,11 @@ function Booking() {
         navigate('/')
     }
 
+    const handleReserve = (e) => {
+        let form = e.target.nextElementSibling.lastChild;
+        form.click();
+    }
+
     return(
         <>
             <section className={styles.reservations}>
@@ -30,7 +35,7 @@ function Booking() {
                             number below. We’ll be happy to accommodate you.
                         </p>                
                     </div>  
-                    {mobile && <button className={styles.reservations_button}>
+                    {mobile && <button className={styles.reservations_button} onClick={handleReserve}>
                         reserve place    
                     </button>}
                     <Form/>                
