@@ -33,6 +33,12 @@ function ChooseTime() {
         errorMessageRef.current.style.display = '';
     }
 
+
+    const handleNumber = (e) => {
+        if(e.key === 'e' || e.key === '.')
+            return e.preventDefault() 
+    }
+
     const handleHour = (e) => {
         e.target.setCustomValidity('')
         let userInput = e.target.value;
@@ -86,6 +92,7 @@ function ChooseTime() {
                     onChange={handleHour}
                     onBlur={handleBlur}
                     onInvalid={handleInvalid}
+                    onKeyDown={handleNumber}
                     placeholder='09'
                     className={styles.input}
                     name='hour'
@@ -98,6 +105,7 @@ function ChooseTime() {
                     onChange={handleMinutes}
                     onBlur={handleBlur}
                     onInvalid={handleInvalid}
+                    onKeyDown={handleNumber}
                     placeholder='00'
                     className={styles.input}
                     name='minutes'

@@ -5,8 +5,7 @@ function ChooseDate(){
     const [day, setDay] = useState('');
     const [month, setMonth] = useState('');
     const [year, setYear] = useState('');
-    const errorMessageRef = useRef();
-    const invalidDateRef = useRef();    
+    const errorMessageRef = useRef(); 
     const monthInputRef = useRef();
     const dayInputRef = useRef();
     const yearInputRef = useRef();
@@ -39,9 +38,15 @@ function ChooseDate(){
         yearInputRef.current.style.setProperty('--date-placeholder', 'rgba(17, 17, 17, 0.5)');
     }
 
+    const handleNumber = (e) => {
+        if(e.key === 'e' || e.key === '.')
+            return e.preventDefault() 
+    }
+
     const handleMonth = (e) => {
         e.target.setCustomValidity('');
         let userInput = e.target.value;
+        if(userInput.includes('e')) return;
         if(0 <= userInput && userInput <= 12)
             setMonth(userInput);
     }
@@ -49,6 +54,8 @@ function ChooseDate(){
     const handleDay = (e) => {
         e.target.setCustomValidity('');
         let userInput = e.target.value;
+        console.log(userInput.includes('e'))
+        if(userInput.includes('e')) return;
         if(0 <= userInput && userInput <= 31)
             setDay(userInput);
     }
@@ -56,6 +63,7 @@ function ChooseDate(){
     const handleYear = (e) => {
         e.target.setCustomValidity('');
         let userInput = e.target.value;
+        if(userInput.includes('e')) return;
         if(userInput.length > 4) return;
         setYear(e.target.value)
     }
@@ -67,38 +75,23 @@ function ChooseDate(){
             addErrorStyles();
             errorMessageRef.current.style.display = 'block';
         }
-            
     }
 
     const handleInvalid = (e) => {
         let isEmpty = e.target.validity.valueMissing;
+        addErrorStyles();
 
-        if(isEmpty){
-            addErrorStyles();
+        if(isEmpty)
             errorMessageRef.current.style.display = 'block';
-        }
-            
+        
         e.target.setCustomValidity(' ');
     }
 
     useEffect(() => {
         if(!day || !month || !year) return;
 
-        let reservationDate = new Date(year, month, day).getTime();
-        let currentDate = new Date().getTime();
-
-        if(currentDate <= reservationDate){
-            monthInputRef.current.setCustomValidity(' ');
-            yearInputRef.current.setCustomValidity(' ');
-            dayInputRef.current.setCustomValidity(' ');
-            invalidDateRef.current.style.display = 'block'
-        }
-            
-        else{
-            removeErrorStyles();
-            errorMessageRef.current.style.display = '';   
-            invalidDateRef.current.style.display = ''             
-        }   
+        removeErrorStyles();
+        errorMessageRef.current.style.display = '';          
     }, [day, month, year])
 
     return(
@@ -112,6 +105,7 @@ function ChooseDate(){
                     onChange={handleDay}
                     onBlur={handleBlur}
                     onInvalid={handleInvalid}
+                    onKeyDown={handleNumber}
                     type='number' 
                     placeholder='DD'
                     className={styles.input}
@@ -123,6 +117,7 @@ function ChooseDate(){
                     onChange={handleMonth}
                     onBlur={handleBlur}
                     onInvalid={handleInvalid}
+                    onKeyDown={handleNumber}
                     type='number' 
                     placeholder='MM'
                     className={styles.input}
@@ -134,6 +129,7 @@ function ChooseDate(){
                     onChange={handleYear}
                     onBlur={handleBlur}
                     onInvalid={handleInvalid}
+                    onKeyDown={handleNumber}
                     type='number' 
                     placeholder='YYYY'
                     className={styles.input}
@@ -143,9 +139,6 @@ function ChooseDate(){
             </fieldset>
             <div className={styles.error_message} ref={errorMessageRef}>
                 This field is incomplete
-            </div>
-            <div className={styles.error_message} ref={invalidDateRef}>
-                Date is invalid
             </div>
         </section>
     )

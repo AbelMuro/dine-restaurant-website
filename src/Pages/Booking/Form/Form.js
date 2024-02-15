@@ -4,22 +4,35 @@ import ChooseDate from './ChooseDate';
 import ChooseTime from './ChooseTime';
 import ChoosePeople from './ChoosePeople';
 import styles from './styles.module.css';
+import {useNavigate} from 'react-router-dom';
 
 function Form(){
+    const navigate = useNavigate();
+    const calendar = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
     const handleSubmit = (e) => {
         e.preventDefault();
         let inputs = e.target.elements;
-        let name = inputs.name.value;
-        let email = inputs.email.value;
-        let hour = inputs.hour.value;
-        let minutes = inputs.minutes.value;
-        let timeOfDay = inputs.timeOfDay.value;
-        let people = inputs.people.value;
-        let month = inputs.month.value;
-        let day = inputs.day.value;
-        let year = inputs.year.value;        
-        console.log('submitted');  
+        let month = Number(inputs.month.value);
+        let day = Number(inputs.day.value);
+        let year = Number(inputs.year.value);  
+        
+        if(day > calendar[month - 1] || day === 0){     //we check if the day is a valid day for the month (29, feb)
+            alert('Reservation date is invalid');
+            return;
+        }
+
+        let reservationDate = new Date(`${month}/${day}/${year}`).getTime(); 
+        let currentDate = new Date().getTime();  
+
+        if(currentDate > reservationDate){
+            alert('Reservation date must be after today')
+            return;
+        }
+
+
+        alert('Reservation has been made');
+        navigate('/')
     }
 
     return(
