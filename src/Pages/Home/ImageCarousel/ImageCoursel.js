@@ -16,6 +16,7 @@ function ImageCoursel() {
 
     const handleNavigate = () => {
         navigate('/Booking');
+        window.scrollTo(0, 0);
     }
 
     const handleCarousel = (e) => {

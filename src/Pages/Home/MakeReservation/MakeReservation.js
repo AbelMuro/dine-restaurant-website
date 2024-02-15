@@ -7,6 +7,7 @@ function MakeReservations() {
 
     const handleNavigate = () => {
         navigate('/Booking');
+        window.scrollTo(0, 0);
     }
 
 

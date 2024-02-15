@@ -4,15 +4,21 @@ import styles from './styles.module.css';
 import icons from '~/Common/icons';
 import useMediaQuery from '~/Hooks/useMediaQuery.js';
 import images from './images';
+import {useNavigate} from 'react-router-dom';
 
 function Booking() {
     const [mobile] = useMediaQuery('(max-width: 600px)');
+    const navigate = useNavigate();
+
+    const handleNavigate = () => {
+        navigate('/')
+    }
 
     return(
         <>
             <section className={styles.reservations}>
                 <div className={styles.reservations_content}>
-                    <img className={styles.reservations_logo} src={icons['logo']}/>
+                    <img className={styles.reservations_logo} src={icons['logo']} onClick={handleNavigate}/>
                     <div className={styles.reservations_header}>
                         <h1>
                             Reservations
